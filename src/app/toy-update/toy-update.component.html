@@ -1,0 +1,44 @@
+<mat-card>
+
+    <form #toyFormUpdate="ngForm" (ngSubmit)="this.update(toyFormUpdate.value)">
+
+      <mat-card-header>
+          <mat-card-title>
+              <h2>Update Toy Information</h2>
+              <h6>you have to enter new information for the toy below</h6>
+          </mat-card-title>
+      </mat-card-header>
+
+<mat-card-content>
+    <mat-form-field>
+        <input matInput placeholder="Toy id" [(ngModel)]="toy.code" required name="id" value={{toy1.id}} #id>
+    </mat-form-field>
+<br/>
+
+    <mat-form-field>
+        <input matInput placeholder="Toy Name" [(ngModel)]="toy.name" required name="name" value={{toy1.name}} #name>
+    </mat-form-field>
+<br/>
+
+    <mat-form-field>
+        <input matInput placeholder="Toy Type"  [(ngModel)]="toy.type" name="type" value={{toy1.type}} #type>
+    </mat-form-field>
+    <br/>
+
+    <mat-form-field>
+      <input matInput placeholder="Toy Price" [(ngModel)]="toy.price"  name="price" value={{toy1.price}} #price>
+  </mat-form-field>
+  <br/>
+    <mat-form-field>
+      <input matInput placeholder="Toy maxAge" [(ngModel)]="toy.maxAge"  name="maxAge" value={{toy1.maxAge}} #maxAge>
+  </mat-form-field>
+</mat-card-content>
+<mat-card-actions>
+    <button mat-raised-button color="primary" type="submit" [disabled]="!toyFormUpdate.form.valid">Update</button>
+</mat-card-actions>
+
+</form>
+</mat-card>
+<div>
+{{toyname}}
+</div>

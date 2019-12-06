@@ -1,0 +1,24 @@
+{
+    "cSpell.words": [
+        "Griphy",
+        "giphy",
+        "giphyservice"
+    ],
+    "git.ignoreLimitWarning": true,
+    "workbench.colorCustomizations": {
+        "activityBar.background": "#29290e",
+        "activityBar.activeBorder": "#205f5f",
+        "activityBar.foreground": "#e7e7e7",
+        "activityBar.inactiveForeground": "#e7e7e799",
+        "activityBarBadge.background": "#205f5f",
+        "activityBarBadge.foreground": "#e7e7e7",
+        "titleBar.activeBackground": "#030301",
+        "titleBar.inactiveBackground": "#03030199",
+        "titleBar.activeForeground": "#e7e7e7",
+        "titleBar.inactiveForeground": "#e7e7e799",
+        "statusBar.background": "#030301",
+        "statusBarItem.hoverBackground": "#29290e",
+        "statusBar.foreground": "#e7e7e7"
+    },
+    "peacock.color": "#030301"
+}

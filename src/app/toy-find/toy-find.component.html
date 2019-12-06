@@ -1,0 +1,57 @@
+
+<mat-card>
+
+  <form #toyForm="ngForm" (ngSubmit)="ngOnInit()">
+
+    <mat-card-header>
+        <mat-card-title>
+            <h2>Find Toy by Name</h2>
+        </mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+         <mat-form-field>
+            <input matInput placeholder="Toy Name" [(ngModel)]="xyz.name" required name="name" #name>
+        </mat-form-field>
+<br/>
+
+    </mat-card-content>
+
+    <mat-card-actions>
+        <button mat-raised-button color="primary" type="submit" [disabled]="!toyForm.form.valid">Find</button>
+        <button mat-raised-button color="secondary" (click)="remove()"  type="button">Delete</button>
+        <button mat-raised-button color="secondary" [routerLink]="['/toy-update/', toy.id]">Update</button>
+       <!-- <button mat-raised-button color="primary" [routerLink]="['/toy-delete/', toy.id]">Delete</button> -->
+        <a mat-button routerLink="/toy-list">Cancel</a>
+    </mat-card-actions>
+
+</form>
+</mat-card>
+
+<!--
+
+<h3>Find By Id</h3>
+<div style="width: 300px;">
+  <form (ngSubmit)="ngOnInit()">
+    <div class="form-group">
+      <label for="ToyId">Toy name</label>
+      <input type="text" class="form-control" id="name" required [(ngModel)]="xyz.name" name="name">
+    </div>
+
+    <div class="btn-group">
+      <button type="submit" class="btn btn-success">Submit</button>
+    </div>
+  </form>
+</div>
+
+-->
+
+<div>
+  <ul>
+    <h5 *ngFor="let toy of toys">
+<li>Toy Name : {{toy.name}}</li>
+<li>Toy Price : {{toy.price}}</li>
+<li>Max Age : {{toy.maxAge}}</li>
+</h5>
+</ul>
+</div>

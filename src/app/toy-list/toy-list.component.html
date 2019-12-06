@@ -1,0 +1,28 @@
+<!--
+<h2>Toys List</h2>
+<div *ngFor="let toy of toys">
+    {{toy.name}}
+</div>
+-->
+
+<mat-card>
+
+    <mat-card-title>List Of Toys</mat-card-title>
+    <mat-card-content>
+        <mat-list>
+            <mat-list-item *ngFor="let toy of toys">
+
+                <img mat-list-avatar src="{{toy.giphyUrl}}" alt="{{toy.name}}">
+                <h2 matLine>
+                    <a mat-button [routerLink]="['/toy-updateToy', toy.code]">{{toy.name}}</a>
+                </h2>
+                <h3 matLine>{{toy.price}} dinars</h3>
+                <h3 matLine>less than {{toy.maxAge}} year</h3>
+            </mat-list-item>
+        </mat-list>
+    </mat-card-content>
+
+    <button mat-fab color="primary" [routerLink]="['/toy-edit/']">Add</button>
+
+    <button mat-fab color="primary" [routerLink]="['/toy-find/', toy.name]">Find</button>
+</mat-card>
