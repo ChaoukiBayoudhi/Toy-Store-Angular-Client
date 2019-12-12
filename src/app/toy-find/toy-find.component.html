@@ -56,6 +56,6 @@
 </h5>
 </ul>
 </div>
-<div [hidden]="!isShown">
+<div *ngIf="!isShown">
   Toy is not Found
 </div>
