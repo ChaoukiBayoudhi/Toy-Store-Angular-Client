@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import {Observable, throwError} from 'rxjs';
+
 // import { Toy } from '/src/app/toyClass/toy';
 
 @Injectable({
@@ -35,11 +35,9 @@ export class ToyService {
 
   save(toy: any): Observable<any> {
     let result: Observable<Object>;
-    if (toy['href']) {
-      result = this.http.put(toy.href, toy);
-    } else {
-      result = this.http.post(this.API + '/newToy', toy);
-    }
+
+    result = this.http.post(this.API + '/newToy', toy);
+
     return result;
   }
 
