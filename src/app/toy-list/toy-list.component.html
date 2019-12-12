@@ -17,12 +17,13 @@
                     <a mat-button [routerLink]="['/toy-updateToy', toy.code]">{{toy.name}}</a>
                 </h2>
                 <h3 matLine>{{toy.price}} dinars</h3>
-                <h3 matLine>less than {{toy.maxAge}} year</h3>
+              <h3 matLine>less than {{toy.MaxAge}} year</h3>
             </mat-list-item>
         </mat-list>
     </mat-card-content>
 
+
     <button mat-fab color="primary" [routerLink]="['/toy-edit/']">Add</button>
 
-    <button mat-fab color="primary" [routerLink]="['/toy-find/', toy.name]">Find</button>
+  <button [routerLink]="['/toy-find/', toy.code]" color="primary" mat-fab>Find</button>
 </mat-card>

@@ -1,32 +1,27 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { ToyService } from '../shared/toy/toy.service';
-import { Subscription, Observable } from 'rxjs';
-import { NgForm } from '@angular/forms';
-import { GriphyService } from '../shared/griphy/griphy.service';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {ToyService} from '../shared/toy/toy.service';
+import {GriphyService} from '../shared/griphy/griphy.service';
+import {Toy} from '../toyClass/toy';
 
 @Component({
   selector: 'app-toy-find',
   templateUrl: './toy-find.component.html',
   styleUrls: ['./toy-find.component.css']
 })
-export class ToyFindComponent implements OnInit , OnDestroy {
-  sub: Subscription;
+export class ToyFindComponent implements OnInit {
   toy: any = {};
-  xyz: any = {};
+  toyRes: Toy = null;
   href: any;
-  toys: Array<any>;
+  isShown = false;
 
-  ngOnDestroy(): void {
-    this.sub.unsubscribe();
-  }
 
-  constructor(private route: ActivatedRoute,
+  constructor(
     private router: Router,
     private toyService: ToyService, private giphyService: GriphyService) { }
 
   ngOnInit() {
-    this.toyByName();
+    // this.toyById();
     // this.id = 0;
     // const id = +this.route.snapshot.paramMap.get('id');
 // this.toyService.get(id)
@@ -35,12 +30,20 @@ export class ToyFindComponent implements OnInit , OnDestroy {
 
   }
 
-  toyByName() {
-    this.toyService.getByName(this.xyz.name).subscribe(data => {
-      this.toys = data;
-      for (const toy of this.toys) {
-        this.giphyService.get(toy.name).subscribe(x => toy.giphyUrl = x);
+  toyById() {
+    this.toyService.get(this.toy.code).subscribe(data => {
+      if (data) {
+        this.toyRes = data;
+        this.isShown = true;
+        this.giphyService.get(this.toyRes.name).subscribe(x => this.toyRes.giphyUrl = x);
       }
+
+    });
+  }
+
+  remove() {
+    this.toyService.remove(this.toy.code).subscribe(data => {
+      this.gotoList();
     });
   }
   gotoList() {

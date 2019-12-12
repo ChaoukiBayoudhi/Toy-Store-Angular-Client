@@ -1,17 +1,17 @@
 
 <mat-card>
 
-  <form #toyForm="ngForm" (ngSubmit)="ngOnInit()">
+  <form #toyForm="ngForm" (ngSubmit)="toyById()">
 
     <mat-card-header>
         <mat-card-title>
-            <h2>Find Toy by Name</h2>
+          <h2>Find Toy by Code</h2>
         </mat-card-title>
     </mat-card-header>
 
     <mat-card-content>
          <mat-form-field>
-            <input matInput placeholder="Toy Name" [(ngModel)]="xyz.name" required name="name" #name>
+           <input #code [(ngModel)]="toy.code" matInput name="code" placeholder="Toy Code" required>
         </mat-form-field>
 <br/>
 
@@ -19,9 +19,9 @@
 
     <mat-card-actions>
         <button mat-raised-button color="primary" type="submit" [disabled]="!toyForm.form.valid">Find</button>
-        <button mat-raised-button color="secondary" (click)="remove()"  type="button">Delete</button>
-        <button mat-raised-button color="secondary" [routerLink]="['/toy-update/', toy.id]">Update</button>
-       <!-- <button mat-raised-button color="primary" [routerLink]="['/toy-delete/', toy.id]">Delete</button> -->
+      <button (click)="remove()" [routerLink]="['/toy-list']" color="secondary" mat-raised-button>Delete</button>
+      <button [routerLink]="['/toy-updateToy/', toy.code]" color="secondary" mat-raised-button>Update</button>
+      <!-- <button mat-raised-button color="primary" [routerLink]="['/toy-delete/', toy.code]">Delete</button> -->
         <a mat-button routerLink="/toy-list">Cancel</a>
     </mat-card-actions>
 
@@ -46,12 +46,16 @@
 
 -->
 
-<div>
+<div *ngIf="isShown">
   <ul>
-    <h5 *ngFor="let toy of toys">
-<li>Toy Name : {{toy.name}}</li>
-<li>Toy Price : {{toy.price}}</li>
-<li>Max Age : {{toy.maxAge}}</li>
+    <h5>
+      <li>Toy Name : {{toyRes.name}}</li>
+      <li>Toy Price : {{toyRes.price}}</li>
+      <li>Max Age : {{toyRes.MaxAge}}</li>
+      <li>Max Age : {{toyRes.MinAge}}</li>
 </h5>
 </ul>
+</div>
+<div [hidden]="!isShown">
+  Toy is not Found
 </div>
